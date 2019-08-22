@@ -30,6 +30,9 @@ func (game Game) checkWin() string {
 	if game.Board[1][0] == "x" && game.Board[1][1] == "x" && game.Board[1][2] == "x" {
 		return "x Winner"
 	}
+	if game.Board[2][0] == "x" && game.Board[2][1] == "x" && game.Board[2][2] == "x" {
+		return "x Winner"
+	}
 	return "Next Turn"
 }
 
