@@ -112,7 +112,7 @@ func Test_CheckWin_Input_O_Mark_Horizon_Third_Line_Should_Be_O_Winner(t *testing
 }
 
 func Test_CheckFullBoard_Input_Mark_X_And_O_Full_Board_Should_Be_True(t *testing.T) {
-	expected := "Tie"
+	expected := true
 	player1 := NewPlayer("mo", "x")
 	player2 := NewPlayer("praw", "o")
 	game := NewGame(player1, player2, "x")
@@ -134,7 +134,7 @@ func Test_CheckFullBoard_Input_Mark_X_And_O_Full_Board_Should_Be_True(t *testing
 }
 
 func Test_CheckFullBoard_Input_Empty_Board_Should_Be_False(t *testing.T) {
-	expected := ""
+	expected := false
 	player1 := NewPlayer("mo", "x")
 	player2 := NewPlayer("praw", "o")
 	game := NewGame(player1, player2, "x")
@@ -147,7 +147,7 @@ func Test_CheckFullBoard_Input_Empty_Board_Should_Be_False(t *testing.T) {
 }
 
 func Test_CheckFullBoard_Input_Mark_X_Non_Full_Board_Should_Be_False(t *testing.T) {
-	expected := ""
+	expected := false
 	player1 := NewPlayer("mo", "x")
 	player2 := NewPlayer("praw", "o")
 	game := NewGame(player1, player2, "x")
