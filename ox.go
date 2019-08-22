@@ -13,12 +13,11 @@ type Player struct {
 }
 
 func (game *Game) Play(player Player, row, column int) string {
-	var winner string
 	game.marking(player, row, column)
 	if game.checkFullBoard() {
-		winner = "Tie"
+		return "Tie"
 	}
-	winner = game.checkWin(player)
+	winner := game.checkWin(player)
 	game.switchTurn()
 	return winner
 }
@@ -58,12 +57,12 @@ func (game *Game) switchTurn() {
 func (game Game) checkFullBoard() bool {
 	for _, board2D := range game.Board {
 		for _, board := range board2D {
-			if board != "" {
-				return true
+			if board == "" {
+				return false
 			}
 		}
 	}
-	return false
+	return true
 }
 
 func NewGame(player1, player2 Player, turn string) Game {
