@@ -145,3 +145,19 @@ func Test_CheckFullBoard_Input_Empty_Board_Should_Be_False(t *testing.T) {
 		t.Errorf("Expect %v but got %v", expected, actual)
 	}
 }
+
+func Test_CheckFullBoard_Input_Mark_X_Non_Full_Board_Should_Be_False(t *testing.T) {
+	expected := false
+	player1 := NewPlayer("mo", "x")
+	player2 := NewPlayer("praw", "o")
+	game := NewGame(player1, player2, "x")
+
+	game.marking(player1, 0, 0)
+	game.marking(player1, 0, 1)
+	game.marking(player1, 0, 2)
+	actual := game.checkFullBoard()
+
+	if expected != actual {
+		t.Errorf("Expect %v but got %v", expected, actual)
+	}
+}
