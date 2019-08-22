@@ -93,3 +93,20 @@ func Test_CheckWin_Input_X_Mark_Row_0_Column_0_Should_Be_Next_Turn(t *testing.T)
 		t.Errorf("Expect %s but got %s", expected, actual)
 	}
 }
+
+func Test_CheckWin_Input_O_Mark_Horizon_Third_Line_Should_Be_O_Winner(t *testing.T) {
+	expected := "o Winner"
+	player1 := NewPlayer("mo", "x")
+	player2 := NewPlayer("praw", "o")
+	game := NewGame(player1, player2, "x")
+
+	game.marking(player2, 2, 0)
+	game.marking(player2, 2, 1)
+	game.marking(player2, 2, 2)
+
+	actual := game.checkWin(player2)
+
+	if expected != actual {
+		t.Errorf("Expect %s but got %s", expected, actual)
+	}
+}
