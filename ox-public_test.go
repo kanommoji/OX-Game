@@ -88,12 +88,12 @@ func Test_O_Win_Vertical_First_Line_Should_Be_O_Winner(t *testing.T) {
 	player2 := ox.NewPlayer("praw", "o")
 	game := ox.NewGame(player1, player2, "x")
 
-	game.Play(player1, 1, 0)
+	game.Play(player1, 0, 1)
 	game.Play(player2, 0, 0)
 	game.Play(player1, 1, 1)
-	game.Play(player2, 0, 1)
+	game.Play(player2, 1, 0)
 	game.Play(player1, 2, 1)
-	winner := game.Play(player2, 0, 2)
+	winner := game.Play(player2, 2, 0)
 
 	actual := winner
 
