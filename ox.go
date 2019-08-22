@@ -13,14 +13,14 @@ type Player struct {
 }
 
 func (game *Game) Play(player Player, row, column int) string {
-	game.marking(player, row, column)
+	game.marking(player.symbol, row, column)
 	winner := game.checkWin(player.symbol)
 	game.switchTurn()
 	return winner
 }
 
-func (game *Game) marking(player Player, row, column int) {
-	game.Board[row][column] = player.symbol
+func (game *Game) marking(playerSymbol string, row, column int) {
+	game.Board[row][column] = playerSymbol
 }
 
 func (game Game) checkWin(playerSymbol string) string {
