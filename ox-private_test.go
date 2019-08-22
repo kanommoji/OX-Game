@@ -4,30 +4,8 @@ import (
 	"testing"
 )
 
-func Test_Play_Input_X_Mark_Horizon_First_Line_Should_Be_X_Winner(t *testing.T) {
-	expected := "x Winner"
-
-	player1 := NewPlayer("mo", "x")
-	player2 := NewPlayer("praw", "o")
-	game := NewGame(player1, player2, "x")
-
-	game.Play(player1, 0, 0)
-	game.Play(player2, 1, 1)
-	game.Play(player1, 0, 1)
-	game.Play(player2, 1, 0)
-	winner := game.Play(player1, 0, 2)
-
-	actual := winner
-
-	if expected != actual {
-		t.Errorf("Expect %s but got %s", expected, actual)
-	}
-
-}
-
 func Test_Marking_Input_X_Row_0_Column_0_Should_Be_Row_0_Column_0_Is_X(t *testing.T) {
 	expected := "x"
-
 	player1 := NewPlayer("mo", "x")
 	player2 := NewPlayer("praw", "o")
 	game := NewGame(player1, player2, "x")
