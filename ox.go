@@ -14,7 +14,7 @@ type Player struct {
 
 func (game *Game) Play(player Player, row, column int) string {
 	game.marking(player, row, column)
-	winner := game.checkWin()
+	winner := game.checkWin(player)
 	game.switchTurn()
 	return winner
 }
@@ -23,15 +23,15 @@ func (game *Game) marking(player Player, row, column int) {
 	game.Board[row][column] = player.symbol
 }
 
-func (game Game) checkWin() string {
-	if game.Board[0][0] == "x" && game.Board[0][1] == "x" && game.Board[0][2] == "x" {
-		return "x Winner"
+func (game Game) checkWin(player Player) string {
+	if game.Board[0][0] == player.symbol && game.Board[0][1] == player.symbol && game.Board[0][2] == player.symbol {
+		return player.symbol + " Winner"
 	}
 	if game.Board[1][0] == "x" && game.Board[1][1] == "x" && game.Board[1][2] == "x" {
-		return "x Winner"
+		return player.symbol + " Winner"
 	}
 	if game.Board[2][0] == "x" && game.Board[2][1] == "x" && game.Board[2][2] == "x" {
-		return "x Winner"
+		return player.symbol + " Winner"
 	}
 	return "Next Turn"
 }
