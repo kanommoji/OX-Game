@@ -14,7 +14,7 @@ type Player struct {
 
 func (game *Game) Play(player Player, row, column int) string {
 	game.marking(player, row, column)
-	winner := game.checkWin(player)
+	winner := game.checkWin(player.symbol)
 	if winner != player.symbol+" Winner" {
 		return game.checkFullBoard()
 	}
@@ -26,24 +26,40 @@ func (game *Game) marking(player Player, row, column int) {
 	game.Board[row][column] = player.symbol
 }
 
-func (game Game) checkWin(player Player) string {
-	for index, _ := range game.Board {
-		if game.Board[index][0] == player.symbol && game.Board[index][1] == player.symbol && game.Board[index][2] == player.symbol {
-			return player.symbol + " Winner"
-		}
-	}
-	for index, _ := range game.Board {
-		if game.Board[0][index] == player.symbol && game.Board[1][index] == player.symbol && game.Board[2][index] == player.symbol {
-			return player.symbol + " Winner"
-		}
-	}
-	if game.Board[0][0] == player.symbol && game.Board[1][1] == player.symbol && game.Board[2][2] == player.symbol {
-		return player.symbol + " Winner"
-	}
-	if game.Board[2][0] == player.symbol && game.Board[1][1] == player.symbol && game.Board[0][2] == player.symbol {
-		return player.symbol + " Winner"
+func (game Game) checkWin(playerSymbol string) string {
+	if game.checkWinHorizontal(playerSymbol) ||
+		game.checkWinVertical(playerSymbol) ||
+		game.checkWinDiagonal(playerSymbol) {
+		return playerSymbol + " Winner"
 	}
 	return "Next Turn"
+}
+
+func (game Game) checkWinDiagonal(playerSymbol string) bool {
+	if game.Board[0][0] == playerSymbol && game.Board[1][1] == playerSymbol && game.Board[2][2] == playerSymbol {
+		return true
+	}
+	if game.Board[2][0] == playerSymbol && game.Board[1][1] == playerSymbol && game.Board[0][2] == playerSymbol {
+		return true
+	}
+	return false
+}
+func (game Game) checkWinVertical(playerSymbol string) bool {
+	for index, _ := range game.Board {
+		if game.Board[0][index] == playerSymbol && game.Board[1][index] == playerSymbol && game.Board[2][index] == playerSymbol {
+			return true
+		}
+	}
+	return false
+}
+
+func (game Game) checkWinHorizontal(playerSymbol string) bool {
+	for index, _ := range game.Board {
+		if game.Board[index][0] == playerSymbol && game.Board[index][1] == playerSymbol && game.Board[index][2] == playerSymbol {
+			return true
+		}
+	}
+	return false
 }
 
 func (game *Game) switchTurn() {
