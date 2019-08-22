@@ -55,3 +55,19 @@ func Test_Marking_Input_O_Row_1_Column_0_Should_Be_Row_1_Column_0_Is_O(t *testin
 		t.Errorf("Expect %s bot got %s", expected, actual)
 	}
 }
+
+func Test_SwitchTurn_Input_Mo_Play_Should_Be_Turn_Praw(t *testing.T) {
+	expected := "praw"
+
+	player1 := NewPlayer("mo", "x")
+	player2 := NewPlayer("praw", "o")
+	game := NewGame(player1, player2, "x")
+
+	game.switchTurn()
+
+	actual := game.turn
+
+	if expected != actual {
+		t.Errorf("Expect %s bot got %s", expected, actual)
+	}
+}
