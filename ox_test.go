@@ -83,3 +83,20 @@ func Test_SwitchTurn_Input_o_Play_Should_Be_Turn_x(t *testing.T) {
 		t.Errorf("Expect %s bot got %s", expected, actual)
 	}
 }
+
+func Test_CheckWin_Input_X_Mark_Horizon_First_Line_Should_Be_X_Winner(t *testing.T) {
+	expected := "x Winner"
+	player1 := NewPlayer("mo", "x")
+	player2 := NewPlayer("praw", "o")
+	game := NewGame(player1, player2, "x")
+
+	game.marking(player1, 0, 0)
+	game.marking(player1, 0, 1)
+	game.marking(player1, 2, 2)
+
+	actual := game.checkWin()
+
+	if expected != actual {
+		t.Errorf("Expect %s bot got %s", expected, actual)
+	}
+}
