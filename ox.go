@@ -15,9 +15,6 @@ type Player struct {
 func (game *Game) Play(player Player, row, column int) string {
 	game.marking(player, row, column)
 	winner := game.checkWin(player.symbol)
-	if winner != player.symbol+" Winner" {
-		return game.checkFullBoard()
-	}
 	game.switchTurn()
 	return winner
 }
@@ -31,6 +28,9 @@ func (game Game) checkWin(playerSymbol string) string {
 		game.checkWinVertical(playerSymbol) ||
 		game.checkWinDiagonal(playerSymbol) {
 		return playerSymbol + " Winner"
+	}
+	if game.checkFullBoard() {
+		return "Tie"
 	}
 	return "Next Turn"
 }
@@ -70,15 +70,15 @@ func (game *Game) switchTurn() {
 	}
 }
 
-func (game Game) checkFullBoard() string {
+func (game Game) checkFullBoard() bool {
 	for _, board2D := range game.Board {
 		for _, board := range board2D {
 			if board == "" {
-				return ""
+				return false
 			}
 		}
 	}
-	return "Tie"
+	return true
 }
 
 func NewGame(player1, player2 Player, turn string) Game {
