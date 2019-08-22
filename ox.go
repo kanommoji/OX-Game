@@ -27,7 +27,12 @@ func (game Game) checkWin() string {
 	return "x Winner"
 }
 
-func (game Game) switchTurn() {
+func (game *Game) switchTurn() {
+	if game.turn == "x" {
+		game.turn = "o"
+	} else {
+		game.turn = "x"
+	}
 }
 
 func NewGame(player1, player2 Player, turn string) Game {
