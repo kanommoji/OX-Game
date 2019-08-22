@@ -10,7 +10,7 @@ func Test_Marking_Input_X_Row_0_Column_0_Should_Be_Row_0_Column_0_Is_X(t *testin
 	player2 := NewPlayer("praw", "o")
 	game := NewGame(player1, player2, "x")
 
-	game.marking(player1, 0, 0)
+	game.marking(player1.symbol, 0, 0)
 
 	actual := game.Board[0][0]
 
@@ -26,7 +26,7 @@ func Test_Marking_Input_O_Row_1_Column_0_Should_Be_Row_1_Column_0_Is_O(t *testin
 	player2 := NewPlayer("praw", "o")
 	game := NewGame(player1, player2, "x")
 
-	game.marking(player2, 1, 0)
+	game.marking(player2.symbol, 1, 0)
 
 	actual := game.Board[1][0]
 
@@ -69,9 +69,9 @@ func Test_CheckWin_Input_X_Mark_Horizon_First_Line_Should_Be_X_Winner(t *testing
 	player2 := NewPlayer("praw", "o")
 	game := NewGame(player1, player2, "x")
 
-	game.marking(player1, 0, 0)
-	game.marking(player1, 0, 1)
-	game.marking(player1, 0, 2)
+	game.marking(player1.symbol, 0, 0)
+	game.marking(player1.symbol, 0, 1)
+	game.marking(player1.symbol, 0, 2)
 
 	actual := game.checkWin(player1.symbol)
 
@@ -86,7 +86,7 @@ func Test_CheckWin_Input_X_Mark_Row_0_Column_0_Should_Be_Next_Turn(t *testing.T)
 	player2 := NewPlayer("praw", "o")
 	game := NewGame(player1, player2, "x")
 
-	game.marking(player1, 0, 0)
+	game.marking(player1.symbol, 0, 0)
 	actual := game.checkWin(player1.symbol)
 
 	if expected != actual {
@@ -100,9 +100,9 @@ func Test_CheckWin_Input_O_Mark_Horizon_Third_Line_Should_Be_O_Winner(t *testing
 	player2 := NewPlayer("praw", "o")
 	game := NewGame(player1, player2, "x")
 
-	game.marking(player2, 2, 0)
-	game.marking(player2, 2, 1)
-	game.marking(player2, 2, 2)
+	game.marking(player2.symbol, 2, 0)
+	game.marking(player2.symbol, 2, 1)
+	game.marking(player2.symbol, 2, 2)
 
 	actual := game.checkWin(player2.symbol)
 
@@ -117,15 +117,15 @@ func Test_CheckFullBoard_Input_Mark_X_And_O_Full_Board_Should_Be_True(t *testing
 	player2 := NewPlayer("praw", "o")
 	game := NewGame(player1, player2, "x")
 
-	game.marking(player1, 0, 0)
-	game.marking(player2, 0, 1)
-	game.marking(player1, 0, 2)
-	game.marking(player2, 1, 0)
-	game.marking(player1, 1, 1)
-	game.marking(player2, 1, 2)
-	game.marking(player1, 2, 0)
-	game.marking(player2, 2, 1)
-	game.marking(player1, 2, 2)
+	game.marking(player1.symbol, 0, 0)
+	game.marking(player2.symbol, 0, 1)
+	game.marking(player1.symbol, 0, 2)
+	game.marking(player2.symbol, 1, 0)
+	game.marking(player1.symbol, 1, 1)
+	game.marking(player2.symbol, 1, 2)
+	game.marking(player1.symbol, 2, 0)
+	game.marking(player2.symbol, 2, 1)
+	game.marking(player1.symbol, 2, 2)
 	actual := game.checkFullBoard()
 
 	if expected != actual {
@@ -152,9 +152,9 @@ func Test_CheckFullBoard_Input_Mark_X_Non_Full_Board_Should_Be_False(t *testing.
 	player2 := NewPlayer("praw", "o")
 	game := NewGame(player1, player2, "x")
 
-	game.marking(player1, 0, 0)
-	game.marking(player1, 0, 1)
-	game.marking(player1, 0, 2)
+	game.marking(player1.symbol, 0, 0)
+	game.marking(player1.symbol, 0, 1)
+	game.marking(player1.symbol, 0, 2)
 	actual := game.checkFullBoard()
 
 	if expected != actual {
