@@ -1,7 +1,7 @@
 package ox
 
 type Game struct {
-	board  [3][3]string
+	Board  [3][3]string
 	player []Player
 	turn   string
 }
@@ -19,7 +19,8 @@ func (game Game) Play(player Player, row, column int) string {
 	return winner
 }
 
-func (game Game) marking(player Player, row, column int) {
+func (game *Game) marking(player Player, row, column int) {
+	game.Board[row][column] = player.symbol
 }
 
 func (game Game) checkWin() string {
@@ -31,7 +32,7 @@ func (game Game) switchTurn() {
 
 func NewGame(player1, player2 Player, turn string) Game {
 	return Game{
-		board:  [3][3]string{},
+		Board:  [3][3]string{},
 		player: []Player{player1, player2},
 		turn:   turn,
 	}
