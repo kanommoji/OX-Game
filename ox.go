@@ -29,6 +29,11 @@ func (game Game) checkWin(player Player) string {
 			return player.symbol + " Winner"
 		}
 	}
+	for index, _ := range game.Board {
+		if game.Board[0][index] == player.symbol && game.Board[1][index] == player.symbol && game.Board[2][index] == player.symbol {
+			return player.symbol + " Winner"
+		}
+	}
 	return "Next Turn"
 }
 
