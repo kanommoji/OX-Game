@@ -36,17 +36,23 @@ func (game Game) checkWin(playerSymbol string) string {
 }
 
 func (game Game) checkWinDiagonal(playerSymbol string) bool {
-	if game.Board[0][0] == playerSymbol && game.Board[1][1] == playerSymbol && game.Board[2][2] == playerSymbol {
+	if game.Board[0][0] == playerSymbol &&
+		game.Board[1][1] == playerSymbol &&
+		game.Board[2][2] == playerSymbol {
 		return true
 	}
-	if game.Board[2][0] == playerSymbol && game.Board[1][1] == playerSymbol && game.Board[0][2] == playerSymbol {
+	if game.Board[2][0] == playerSymbol &&
+		game.Board[1][1] == playerSymbol &&
+		game.Board[0][2] == playerSymbol {
 		return true
 	}
 	return false
 }
 func (game Game) checkWinVertical(playerSymbol string) bool {
 	for index, _ := range game.Board {
-		if game.Board[0][index] == playerSymbol && game.Board[1][index] == playerSymbol && game.Board[2][index] == playerSymbol {
+		if game.Board[0][index] == playerSymbol &&
+			game.Board[1][index] == playerSymbol &&
+			game.Board[2][index] == playerSymbol {
 			return true
 		}
 	}
@@ -55,7 +61,9 @@ func (game Game) checkWinVertical(playerSymbol string) bool {
 
 func (game Game) checkWinHorizontal(playerSymbol string) bool {
 	for index, _ := range game.Board {
-		if game.Board[index][0] == playerSymbol && game.Board[index][1] == playerSymbol && game.Board[index][2] == playerSymbol {
+		if game.Board[index][0] == playerSymbol &&
+			game.Board[index][1] == playerSymbol &&
+			game.Board[index][2] == playerSymbol {
 			return true
 		}
 	}
