@@ -1,0 +1,401 @@
+{
+	"info": {
+		"_postman_id": "06ac8b40-616e-460c-be64-3b5071090cdf",
+		"name": "OX-Game",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "X Win Horizontal First Line",
+			"item": [
+				{
+					"name": "Set Player 1 Name is mo and symbol is x",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "92ab2968-5ffb-4993-af51-a9c658776af3",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"player\":{\n\t\t\t\"name\":\"mo\",\n\t\t\t\"symbol\":\"x\"\n\t}\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/ox/new-game/player",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ox",
+								"new-game",
+								"player"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Set Player 2 Name is praw and symbol is o",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "92ab2968-5ffb-4993-af51-a9c658776af3",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"player\":{\n\t\t\"name\":\"praw\",\n\t\t\"symbol\":\"o\"\n\t}\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/ox/new-game/player",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ox",
+								"new-game",
+								"player"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Turn One x mark board in row 0 column 0",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "92ab2968-5ffb-4993-af51-a9c658776af3",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"pm.test(\"Body is correct\", function () {",
+									"    pm.response.to.have.body(\"Next Turn\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "row",
+									"value": "0",
+									"type": "text"
+								},
+								{
+									"key": "column",
+									"value": "0",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/ox/play",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ox",
+								"play"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Turn Two o mark board in row 1 column 1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "92ab2968-5ffb-4993-af51-a9c658776af3",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"pm.test(\"Body is correct\", function () {",
+									"    pm.response.to.have.body(\"Next Turn\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "row",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "column",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/ox/play",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ox",
+								"play"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Turn Three x mark board in row 0 column 1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "92ab2968-5ffb-4993-af51-a9c658776af3",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"pm.test(\"Body is correct\", function () {",
+									"    pm.response.to.have.body(\"Next Turn\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "row",
+									"value": "0",
+									"type": "text"
+								},
+								{
+									"key": "column",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/ox/play",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ox",
+								"play"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Turn Four o mark board in row 1 column 0",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "92ab2968-5ffb-4993-af51-a9c658776af3",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"pm.test(\"Body is correct\", function () {",
+									"    pm.response.to.have.body(\"Next Turn\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "row",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "column",
+									"value": "0",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/ox/play",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ox",
+								"play"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Turn Five x mark board in row 0 column 2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "92ab2968-5ffb-4993-af51-a9c658776af3",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"pm.test(\"Body is correct\", function () {",
+									"    pm.response.to.have.body(\"x Winner\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "row",
+									"value": "0",
+									"type": "text"
+								},
+								{
+									"key": "column",
+									"value": "2",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/ox/play",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ox",
+								"play"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
