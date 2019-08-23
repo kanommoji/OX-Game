@@ -2,14 +2,14 @@ package ox
 
 type Game struct {
 	Board  [3][3]string
-	player []Player
-	turn   string
+	Player []Player `json:"player"`
+	Turn   string
 }
 
 type Player struct {
-	name   string
-	symbol string
-	score  int
+	Name   string `json:"name"`
+	Symbol string `json:"symbol"`
+	Score  int
 }
 
 func (game *Game) Play(row, column int) string {
@@ -29,7 +29,7 @@ func (game *Game) marking(row, column int) bool {
 	if !game.checkBoardPositionEmpty(row, column) {
 		return false
 	}
-	game.Board[row][column] = game.turn
+	game.Board[row][column] = game.Turn
 	return true
 }
 
@@ -37,7 +37,7 @@ func (game Game) checkWin() string {
 	if game.checkWinHorizontal() ||
 		game.checkWinVertical() ||
 		game.checkWinDiagonal() {
-		return game.turn + " Winner"
+		return game.Turn + " Winner"
 	}
 	if game.checkFullBoard() {
 		return "Tie"
@@ -46,23 +46,23 @@ func (game Game) checkWin() string {
 }
 
 func (game Game) checkWinDiagonal() bool {
-	if game.Board[0][0] == game.turn &&
-		game.Board[1][1] == game.turn &&
-		game.Board[2][2] == game.turn {
+	if game.Board[0][0] == game.Turn &&
+		game.Board[1][1] == game.Turn &&
+		game.Board[2][2] == game.Turn {
 		return true
 	}
-	if game.Board[2][0] == game.turn &&
-		game.Board[1][1] == game.turn &&
-		game.Board[0][2] == game.turn {
+	if game.Board[2][0] == game.Turn &&
+		game.Board[1][1] == game.Turn &&
+		game.Board[0][2] == game.Turn {
 		return true
 	}
 	return false
 }
 func (game Game) checkWinVertical() bool {
 	for index, _ := range game.Board {
-		if game.Board[0][index] == game.turn &&
-			game.Board[1][index] == game.turn &&
-			game.Board[2][index] == game.turn {
+		if game.Board[0][index] == game.Turn &&
+			game.Board[1][index] == game.Turn &&
+			game.Board[2][index] == game.Turn {
 			return true
 		}
 	}
@@ -71,9 +71,9 @@ func (game Game) checkWinVertical() bool {
 
 func (game Game) checkWinHorizontal() bool {
 	for index, _ := range game.Board {
-		if game.Board[index][0] == game.turn &&
-			game.Board[index][1] == game.turn &&
-			game.Board[index][2] == game.turn {
+		if game.Board[index][0] == game.Turn &&
+			game.Board[index][1] == game.Turn &&
+			game.Board[index][2] == game.Turn {
 			return true
 		}
 	}
@@ -81,10 +81,10 @@ func (game Game) checkWinHorizontal() bool {
 }
 
 func (game *Game) switchTurn() {
-	if game.turn == "x" {
-		game.turn = "o"
+	if game.Turn == "x" {
+		game.Turn = "o"
 	} else {
-		game.turn = "x"
+		game.Turn = "x"
 	}
 }
 
@@ -99,18 +99,18 @@ func (game Game) checkFullBoard() bool {
 	return true
 }
 
-func NewGame(player1, player2 Player, turn string) Game {
+func NewGame(player []Player, turn string) Game {
 	return Game{
 		Board:  [3][3]string{},
-		player: []Player{player1, player2},
-		turn:   turn,
+		Player: player,
+		Turn:   turn,
 	}
 }
 
 func NewPlayer(name string, symbol string) Player {
 	return Player{
-		name:   name,
-		score:  0,
-		symbol: symbol,
+		Name:   name,
+		Score:  0,
+		Symbol: symbol,
 	}
 }
