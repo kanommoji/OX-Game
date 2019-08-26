@@ -1,6 +1,7 @@
-package ox
+package ox_test
 
 import (
+	. "ox/service"
 	"testing"
 )
 

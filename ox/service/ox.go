@@ -13,16 +13,12 @@ type Player struct {
 }
 
 func (game *Game) Play(row, column int) string {
-	statusMarking := game.marking(row, column)
-	winner := game.checkWin()
-	if statusMarking {
-		game.switchTurn()
+	if !game.marking(row, column) {
+		return "Can not marking"
 	}
+	winner := game.checkWin()
+	game.switchTurn()
 	return winner
-}
-
-func (game Game) checkBoardPositionEmpty(row, column int) bool {
-	return game.Board[row][column] == ""
 }
 
 func (game *Game) marking(row, column int) bool {
@@ -31,6 +27,10 @@ func (game *Game) marking(row, column int) bool {
 	}
 	game.Board[row][column] = game.Turn
 	return true
+}
+
+func (game Game) checkBoardPositionEmpty(row, column int) bool {
+	return game.Board[row][column] == ""
 }
 
 func (game Game) checkWin() string {
@@ -58,6 +58,7 @@ func (game Game) checkWinDiagonal() bool {
 	}
 	return false
 }
+
 func (game Game) checkWinVertical() bool {
 	for index, _ := range game.Board {
 		if game.Board[0][index] == game.Turn &&
@@ -80,14 +81,6 @@ func (game Game) checkWinHorizontal() bool {
 	return false
 }
 
-func (game *Game) switchTurn() {
-	if game.Turn == "x" {
-		game.Turn = "o"
-	} else {
-		game.Turn = "x"
-	}
-}
-
 func (game Game) checkFullBoard() bool {
 	for _, board2D := range game.Board {
 		for _, board := range board2D {
@@ -97,6 +90,14 @@ func (game Game) checkFullBoard() bool {
 		}
 	}
 	return true
+}
+
+func (game *Game) switchTurn() {
+	if game.Turn == "x" {
+		game.Turn = "o"
+	} else {
+		game.Turn = "x"
+	}
 }
 
 func NewGame(player []Player, turn string) Game {
