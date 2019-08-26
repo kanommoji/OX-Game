@@ -8,7 +8,7 @@ import (
 )
 
 type GameAPI struct {
-	GameAPI service.Game
+	Game service.Game
 }
 
 func (gameAPI *GameAPI) AddPlayer(c *gin.Context) {
@@ -18,9 +18,9 @@ func (gameAPI *GameAPI) AddPlayer(c *gin.Context) {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
 	}
-	gameAPI.GameAPI.Player = append(gameAPI.GameAPI.Player, player)
+	gameAPI.Game.Player = append(gameAPI.Game.Player, player)
 }
 
 func (gameAPI *GameAPI) SetNewGame(c *gin.Context) {
-	gameAPI.GameAPI = service.NewGame(gameAPI.GameAPI.Player, "x")
+	gameAPI.Game = service.NewGame(gameAPI.Game.Player, "x")
 }
